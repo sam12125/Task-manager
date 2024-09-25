@@ -6,4 +6,15 @@ export interface Task {
     priority: 'Low' | 'Medium' | 'High';
     status: 'In progress' | 'Completed';
   }
+
+ // src/types.ts
+
+export interface Task {
+  id: string;          
+  title: string;         
+  dueDate: string;       
+  priority: 'Low' | 'Medium' | 'High';
+}
+
+  
   
