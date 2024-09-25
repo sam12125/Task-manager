@@ -12,17 +12,17 @@ const { TextArea } = Input;
 const { Option } = Select;
 
 const TaskForm: React.FC<TaskFormProps> = ({ onSubmit, initialTask }) => {
-  // Set initial task state with current date in IST if no due date is provided
+  // Set initial task state with current date
   const [task, setTask] = useState<Task>({
     id: initialTask?.id || Date.now().toString(),
     title: initialTask?.title || '',
     description: initialTask?.description || '',
-    dueDate: initialTask?.dueDate || '', // We will handle default date if empty
+    dueDate: initialTask?.dueDate || '',
     priority: initialTask?.priority || 'Medium',
     status: initialTask?.status || 'In progress', // Default status
   });
 
-  // Get current date in IST format using native JavaScript Date
+  // Get current date
   const getCurrentDateIST = () => {
     const currentDate = new Date();
     const istOffset = 5 * 60 * 60 * 1000 + 30 * 60 * 1000; // IST is UTC + 5:30
@@ -34,7 +34,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit, initialTask }) => {
   };
 
   const handleSubmit = () => {
-    // Set the due date to the current date in IST if it's not selected
+    // Set the due date to the current date in IST
     const updatedTask = {
       ...task,
       dueDate: task.dueDate || getCurrentDateIST(), // Fallback to current date
@@ -66,7 +66,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit, initialTask }) => {
 
       <Form.Item label="Due Date">
         <DatePicker
-          value={task.dueDate ? moment(task.dueDate) : undefined} // Convert the string to a moment object
+          value={task.dueDate ? moment(task.dueDate) : undefined} // Convert the string to a object
           onChange={(date, dateString) => {
             if (dateString) {
               setTask({ ...task, dueDate: String(dateString) });

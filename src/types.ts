@@ -7,8 +7,6 @@ export interface Task {
     status: 'In progress' | 'Completed';
   }
 
- // src/types.ts
-
 export interface Task {
   id: string;          
   title: string;         

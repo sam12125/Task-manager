@@ -16,13 +16,13 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onUpdate }) => {
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case 'Low':
-        return 'green'; // Green for low priority
+        return 'green';
       case 'Medium':
-        return 'orange'; // Orange for medium priority
+        return 'orange'; 
       case 'High':
-        return 'red'; // Red for high priority
+        return 'red'; 
       default:
-        return 'blue'; // Default color
+        return 'blue'; 
     }
   };
 
@@ -32,15 +32,13 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onUpdate }) => {
       <h3 className="text-2xl">{task.title}</h3>
       <p>{task.description}</p>
 
-      {/* Status Tag */}
+
       <Tag color={task.status === 'Completed' ? 'green' : 'blue'}>{task.status}</Tag>
 
       {/* Priority Tag with color based on priority */}
       <Tag color={getPriorityColor(task.priority)}>{task.priority}</Tag>
 
       <p>Due Date: {task.dueDate}</p>
-
-      {/* Action Buttons */}
 
       <div className="flex gap-2">
         <Button onClick={() => onDelete(task.id)}>Delete</Button>

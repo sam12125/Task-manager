@@ -54,7 +54,7 @@ const TaskList: React.FC = () => {
     const selectedOption = event.target.value;
     setSortOption(selectedOption);
     
-    // Determine if the selected option is for date or priority sorting
+    // Determine if the selected option is for date or priority
     if (selectedOption === 'latestFirst' || selectedOption === 'latestEnd') {
       sortByDate(selectedOption);
     } else if (selectedOption === 'lowtohigh' || selectedOption === 'hightolow') {
