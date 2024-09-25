@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import TaskForm from './components/TaskForm';
+import TaskList from './components/TaskList';
+import { Task } from './types';
+import { getTasksFromLocalStorage, saveTasksToLocalStorage } from './components/localStorage';
 
-function App() {
+const App: React.FC = () => {
+  const addTask = (task: Task) => {
+    const tasks = getTasksFromLocalStorage();
+    tasks.push(task);
+    saveTasksToLocalStorage(tasks);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App container mx-auto p-4">
+      <h1 className="text-2xl font-bold text-center mb-4">Task Manager</h1>
+      <TaskForm onSubmit={addTask} />
+      <TaskList />
     </div>
   );
-}
+};
 
 export default App;
